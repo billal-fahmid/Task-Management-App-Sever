@@ -100,6 +100,23 @@ async function run() {
             res.send(result)
         })
 
+// 
+
+
+
+        app.patch('/update/myTeams/:id' , async(req,res) =>{
+            const id=req.params.id;
+            const newMyTeams = req.body
+            const filter={_id : new ObjectId(id)}
+            const updateDoc={
+                $set:{
+                    myTeams:newMyTeams
+                }
+            }
+            const result = await usersCollection.updateOne(filter , updateDoc);
+            res.send(result)
+        })
+
 
 
         
